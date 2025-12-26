@@ -86,3 +86,154 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- Starlight Theme Variables --- */
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --danger: #ef4444;
+    --success: #22c55e;
+}
+
+/* --- Base Styles --- */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+header p {
+    color: var(--text-muted);
+}
+
+/* --- Dashboard Grid Layout --- */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+    gap: 20px;
+}
+
+.input-card, .chart-card, .history-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Form Styling --- */
+#expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select {
+    padding: 12px;
+    background: var(--bg);
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+/* --- Transaction List --- */
+.history-card {
+    grid-column: span 2; /* Spans full width on desktop */
+    margin-top: 20px;
+}
+
+#transaction-list {
+    list-style: none;
+    padding: 0;
+}
+
+#transaction-list li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--primary);
+}
+
+#transaction-list li span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* --- MOBILE RESPONSIVENESS (The Magic) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr; /* Stack everything in one column */
+    }
+
+    .history-card {
+        grid-column: span 1; /* Reset span for mobile */
+    }
+
+    /* Make touch targets larger for fingers */
+    button, input, select {
+        min-height: 50px;
+        font-size: 16px; /* Prevents auto-zoom on iPhones */
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    #transaction-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}

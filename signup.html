@@ -55,6 +55,16 @@ if (allUsers[user] && allUsers[user].password === pass) {
     sessionStorage.setItem('activeUser', user); 
     window.location.href = 'index.html'; 
 }
-    </script>
+
+
+    // Only put the "Security Guard" logic here
+    const sessionUser = sessionStorage.getItem('activeUser') || localStorage.getItem('activeUser');
+    if (!sessionUser) {
+        window.location.href = 'login.html';
+    } else {
+        document.getElementById('user-display-name').innerText = sessionUser;
+    }
+</script>
+
 </body>
 </html>
