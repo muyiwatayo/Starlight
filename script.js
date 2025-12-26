@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show last 5 transactions
         transactionHistory.slice(-5).reverse().forEach(item => {
             const li = document.createElement('li');
-            li.innerHTML = `<strong>${item.name}</strong>: $${item.price} <span>(${item.cat})</span>`;
+            li.innerHTML = `<strong>${item.name}</strong>: N${item.price} <span>(${item.cat})</span>`;
             listDisplay.appendChild(li);
         });
     }
