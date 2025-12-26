@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up - Starlight expense</title>
+    <link rel="shortcut icon" href="2.png" type="image/x-icon">
+</head>
+<body>
+    <h2>Create Account</h2>
+    <form id="signup-form">
+        <input type="text" id="username" placeholder="Username" required><br>
+        <input type="password" id="password" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Get existing users or create empty object
+            let allUsers = JSON.parse(localStorage.getItem('spendWise_users')) || {};
+
+            if (allUsers[user]) {
+                alert("Username already exists!");
+            } else {
+                // Create user entry with empty data structure
+                allUsers[user] = {
+                    password: pass,
+                    totals: { Food: 0, Rent: 0, Transport: 0, Entertainment: 0 },
+                    history: []
+                };
+                localStorage.setItem('spendWise_users', JSON.stringify(allUsers));
+                alert("Account created successfully!");
+                window.location.href = 'login.html'; // Redirect to login
+            }
+        });
+
+        // Inside your signup script...
+const joinDate = new Date().toLocaleDateString(); // Captures "12/26/2025"
+
+allUsers[user] = {
+    password: pass,
+    joined: joinDate, // Save the date here!
+    totals: { Food: 0, Rent: 0, Transport: 0, Entertainment: 0 },
+    history: []
+};
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starlight Expense</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="2.png" type="image/x-icon">
+</head>
+<body>
+
+ <h2>Welcome back, <span id="user-display-name">User</span>!</h2>
+<p style="font-size: 0.8rem; color: gray;">
+    Tracking since: <span id="user-joined-date">...</span>
+</p>
+    <div class="container">
+        <header>
+            <h1>Spend-Wise</h1>
+            <p>Track your spending, master your budget.</p>
+        </header>
+
+        <main class="dashboard">
+            <section class="input-card">
+                <h3>Add New Expense</h3>
+                <form id="expense-form">
+                    <input type="text" id="description" placeholder="Your expense here!" required>
+                    <input type="number" id="amount" placeholder="Amount ($)" required>
+                    <select id="category">
+                        <option value="Food">Food</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Entertainment">Entertainment</option>
+                    </select>
+                    <button type="submit" id="add-btn">Add Expense</button>
+                </form>
+            </section>
+
+            <section class="chart-card">
+                <canvas id="expenseChart"></canvas>
+            </section>
+        </main>
+    </div>
+
+    <section class="history-card">
+    <h3>Recent Transactions</h3>
+    <ul id="transaction-list">
+        </ul>
+</section>
+
+    <script src="script.js">
+    // Change this in your login.html script
+if (allUsers[user] && allUsers[user].password === pass) {
+    // sessionStorage expires when the tab is closed!
+    sessionStorage.setItem('activeUser', user); 
+    window.location.href = 'index.html'; 
+}
+    </script>
+</body>
+</html>
